@@ -1,5 +1,5 @@
 import { Request } from "express";
-import { IToken } from "../DTOs/token";
+import IToken from "../models/token";
 
 declare module "express" {
   interface Request {
