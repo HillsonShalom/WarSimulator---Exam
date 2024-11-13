@@ -8,6 +8,7 @@ interface IOrganization {
     amount: number;
   }[];
   budget: number;
+  region?: string;
 }
 
 export default IOrganization;

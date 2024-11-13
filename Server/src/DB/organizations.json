@@ -12,7 +12,8 @@
         }
       ],
       "budget": 8000000,
-      "role": "def"
+      "role": "def",
+      "region": "north"
     },
     {
       "name": "IDF - South",
@@ -27,7 +28,8 @@
         }
       ],
       "budget": 9000000,
-      "role": "def"
+      "role": "def",
+      "region": "south"
     },
     {
       "name": "IDF - Center",
@@ -42,7 +44,8 @@
         }
       ],
       "budget": 10000000,
-      "role": "def"
+      "role": "def",
+      "region": "center"
     },
     {
       "name": "IDF - West Bank",
@@ -53,7 +56,8 @@
         }
       ],
       "budget": 7000000,
-      "role": "def"
+      "role": "def",
+      "region": "west"
     },
     {
       "name": "Hezbollah",

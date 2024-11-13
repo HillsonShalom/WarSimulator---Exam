@@ -11,6 +11,7 @@ const port = process.env.PORT;
 dbConnection();
 
 const app = exp();
+app.use(exp.static('client/dist'))
 const server = http.createServer(app)
 
 const io = new Server(server)

@@ -6,7 +6,7 @@ import Organization from '../types/schemas/organizationSchema';
 
 export const seedMissiles = async () => {
     try {
-        const missiles = await fs.readFile('./missiles.json', {encoding: 'utf-8'}).then(s => JSON.parse(s) as IMissile[] | undefined);
+        const missiles = await fs.readFile('src/DB/missiles.json', {encoding: 'utf-8'}).then(s => JSON.parse(s) as IMissile[] | undefined);
         if (!missiles) throw new Error("an error occurred when loading missile.json file")
 
         missiles.forEach(async (m) => {
@@ -22,7 +22,7 @@ export const seedMissiles = async () => {
 
 export const seedOrganizations = async () => {
     try {
-        const organizations = await fs.readFile('./organizations.json', {encoding: 'utf-8'}).then(s => JSON.parse(s) as IOrganization[] | undefined);
+        const organizations = await fs.readFile('src/DB/organizations.json', {encoding: 'utf-8'}).then(s => JSON.parse(s) as IOrganization[] | undefined);
         if (!organizations) throw new Error("an error occurred when loading organizations.json file");
 
         organizations.forEach(async (o) => {

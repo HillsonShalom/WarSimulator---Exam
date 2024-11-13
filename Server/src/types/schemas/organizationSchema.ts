@@ -25,6 +25,9 @@ const organizationSchema = new Schema<organizationDocument>(
     role: {
         type: String,
         enum: ["att", "def", "adm"]
+    },
+    region: {
+        type: String
     }
   }
 );

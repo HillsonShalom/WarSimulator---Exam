@@ -5,7 +5,6 @@ interface IUser {
   username: string;
   password: string;
   organization: Types.ObjectId | IOrganization;
-  region?: string;
 }
 
 export default IUser;

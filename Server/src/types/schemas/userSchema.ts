@@ -15,9 +15,6 @@ const userSchema = new Schema<userDocument>(
         type: Schema.Types.ObjectId,
         ref: 'Organization'
     },
-    region: {
-        type: String
-    }
   }, { timestamps: true }
 );
 

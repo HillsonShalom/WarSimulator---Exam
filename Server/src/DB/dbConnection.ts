@@ -2,6 +2,7 @@ import { connect } from "mongoose";
 import Missile from "../types/schemas/missileSchema";
 import { seedMissiles, seedOrganizations } from "./seed";
 import Organization from "../types/schemas/organizationSchema";
+import 'dotenv/config'
 
 const dbConnection = async () => {
   try {
