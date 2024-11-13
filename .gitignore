@@ -1,0 +1,4 @@
+.env
+PATHWAY.txt
+*/node_modules
+Server/dist
