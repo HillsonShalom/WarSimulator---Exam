@@ -25,10 +25,12 @@ const dispatchSchema = new Schema<dispatchDocument>(
         defenser: {
           type: Schema.Types.ObjectId,
           ref: "User",
+          default: null
         },
         missile: {
           type: Schema.Types.ObjectId,
           ref: "Missile",
+          default: null
         },
       },
     },

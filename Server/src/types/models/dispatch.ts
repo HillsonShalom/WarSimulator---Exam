@@ -10,8 +10,8 @@ interface IDispatch {
     region: string;
   };
   defense: {
-    defenser: Types.ObjectId | IUser;
-    missile: Types.ObjectId | IMissile;
+    defenser: Types.ObjectId | IUser | null;
+    missile: Types.ObjectId | IMissile | null;
   };
   status: DispatchStatus;
   launchMoment: Date | null;
