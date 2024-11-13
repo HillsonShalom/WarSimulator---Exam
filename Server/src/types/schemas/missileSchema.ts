@@ -1,7 +1,7 @@
 import { model, Schema } from "mongoose";
 import IMissile from "../models/missile";
 
-interface missileDocument extends IMissile, Document {}
+export interface missileDocument extends IMissile, Document {}
 
 const missileSchema = new Schema<missileDocument>(
   {

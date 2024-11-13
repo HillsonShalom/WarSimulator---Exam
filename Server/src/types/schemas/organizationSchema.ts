@@ -10,8 +10,9 @@ const organizationSchema = new Schema<organizationDocument>(
     },
     resources: {
         type: [{
-            name: {
-                type: String
+            id: {
+                type: Schema.Types.ObjectId,
+                ref: 'Missile'
             },
             amount: {
                 type: Number

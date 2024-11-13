@@ -20,7 +20,7 @@ export const verifyToken = async (
     req.token = jwt.verify(token, process.env.SECRET_KEY!) as IToken;
     if (!req.token) throw new AppResError(401, "Wrong token!");
 
-    const user = await User.findById(req.token.id).populate("organization").exec();
+    const user = await User.findById(req.token.id).populate({path: "organization", populate: {path: "resources.id"}}).exec();
     if (!user) throw new AppResError(404, "User not found!");
     req.token.id = user;
     

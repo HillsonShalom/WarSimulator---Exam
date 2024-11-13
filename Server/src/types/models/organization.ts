@@ -1,10 +1,12 @@
+import { Types } from "mongoose";
 import { Role } from "./enums";
+import IMissile from "./missile";
 
 interface IOrganization {
   name: string;
   role: Role;
   resources: {
-    name: string;
+    id: Types.ObjectId | IMissile;
     amount: number;
   }[];
   budget: number;
