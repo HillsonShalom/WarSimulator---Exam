@@ -19,23 +19,29 @@ const History = () => {
   return (
     <div>
       <table>
-        <tr>
-          <th>Rocket</th>
-          <th>From</th>
-          <th>Time to Hit</th>
-          <th>Status</th>
-        </tr>
-        {
-          
-        }
-        {loadingStatus === DataStatus.SUCCESS && table.map(r => {
-          return (<tr>
-            <td>{r.name}</td>
-            <td>{r.fromOrg}</td>
-            <td>{r.timeToHit}</td>
-            <td>{r.status}</td>
-          </tr>)
-        })}
+        <thead>
+          <tr>
+            <th>Rocket</th>
+            <th>From</th>
+            <th>To</th>
+            <th>Time to Hit</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          {loadingStatus === DataStatus.SUCCESS &&
+            table.map((r) => {
+              return (
+                <tr key={r.id}>
+                  <td>{r.name}</td>
+                  <td>{r.fromOrg}</td>
+                  <td>{r.toRegion}</td>
+                  <td>{r.timeToHit}</td>
+                  <td>{r.status}</td>
+                </tr>
+              );
+            })}
+        </tbody>
       </table>
     </div>
   );

@@ -9,6 +9,7 @@ export interface IGetAccount {
   organization: {
     name: string;
     role: ERole;
+    region?: string;
     resources: {
       id: {
         name: string;

@@ -3,6 +3,7 @@ import Attack from "./components/Attack"
 import Defense from "./components/Defense"
 import Login from "./components/Login"
 import Register from "./components/Register"
+import Account from "./components/Account"
 
 
 function App() {
@@ -11,6 +12,7 @@ const [defComp, setDefComp] = useState(false)
   return (
     <>
       <h1>Hello to my War Simulator!</h1>
+      <Account/>
       <Register/>
       <Login/>
       {attComp && <Attack/>}

@@ -10,7 +10,7 @@ const getOurs = async (req: Request, res: Response) => {
     const user = req.token!.id as UserType;
     const org = user.organization as OrganizationType;
 
-    const query = (await Dispatch.find({})
+    let query = (await Dispatch.find({})
       .select("-defense -updatedAt -__v")
       .populate({
         path: "attack.attacker",
@@ -18,7 +18,9 @@ const getOurs = async (req: Request, res: Response) => {
         populate: { path: "organization", select: "name" },
       })
       .populate({ path: "attack.missile", select: "name" })
-      .exec()) as unknown as attackersTableItem[];
+      .exec()) as unknown as queryTableItem[];
+    
+    query = query.filter(q => q.attack.attacker.organization._id == org.id)
 
     const table: ITableItem[] = query.map((q) => {
       return {
@@ -41,7 +43,7 @@ const getOurs = async (req: Request, res: Response) => {
 
 export default getOurs;
 
-interface attackersTableItem {
+interface queryTableItem {
   _id: string;
   attack: {
     attacker: {

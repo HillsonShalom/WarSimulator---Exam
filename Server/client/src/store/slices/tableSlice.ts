@@ -5,7 +5,7 @@ import {
 } from "@reduxjs/toolkit";
 import { DataStatus, tableState } from "../../types/redux";
 import { ERole } from "../../types/DTOs/response/fromAccount";
-import { ITableItem } from "../../types/DTOs/response/fromHistory";
+import { DispatchStatus, ITableItem } from "../../types/DTOs/response/fromHistory";
 
 const baseUrl = "http://localhost:8201/";
 
@@ -22,11 +22,16 @@ export const fetchTable = createAsyncThunk(
       const rolePath = role === ERole.ATTAK ? "attack" : "defense";
       const token = localStorage.getItem("Authorization");
       if (!token) throw new Error("Login first!");
-      const res = await fetch(baseUrl + rolePath, {
+      let res = await fetch(baseUrl + rolePath, {
         headers: {
           Authorization: token,
         },
       }).then(d => d.json()) as ITableItem[];
+
+      if (role === ERole.DEFENSE) {
+        res = res.filter(r => r.status !== DispatchStatus.LOADED)
+      }
+
       return thunkApi.fulfillWithValue(res)
     } catch (err) {
       thunkApi.rejectWithValue((err as Error).message);
