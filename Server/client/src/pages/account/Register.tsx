@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
-import { useAppDispatch, useAppSelector } from "../store/store"
-import { fetchOrgsOptions } from "../store/slices/orgsSlice"
-import { fetchRegister } from "../utils/accountService"
+import { useAppDispatch, useAppSelector } from "../../store/store"
+import { fetchOrgsOptions } from "../../store/slices/orgsSlice"
+import { fetchRegister } from "../../utils/accountService"
 
 const Register = () => {
     const orgs = useAppSelector(s => s.orgsOps.orgs)

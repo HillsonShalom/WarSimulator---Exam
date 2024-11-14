@@ -2,7 +2,7 @@ import { useEffect } from "react"
 import { useAppDispatch, useAppSelector } from "../store/store"
 import { fetchGetAccount } from "../store/slices/accountSlice"
 import { DataStatus } from "../types/redux"
-import CreateDispatch from "./CreateDispatch"
+import CreateDispatch from "../pages/attack/CreateDispatch"
 import { ERole } from "../types/DTOs/response/fromAccount"
 
 const Ammo = () => {

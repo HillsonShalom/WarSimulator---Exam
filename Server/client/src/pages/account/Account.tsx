@@ -1,8 +1,9 @@
 import { useEffect } from "react";
-import { useAppDispatch, useAppSelector } from "../store/store";
-import { DataStatus } from "../types/redux";
-import { fetchGetAccount } from "../store/slices/accountSlice";
-import { ERole } from "../types/DTOs/response/fromAccount";
+import { useAppDispatch, useAppSelector } from "../../store/store";
+import { fetchGetAccount } from "../../store/slices/accountSlice";
+import { DataStatus } from "../../types/redux";
+import { ERole } from "../../types/DTOs/response/fromAccount";
+import { useNavigate } from "react-router-dom";
 
 const Account = () => {
   const accountStatus = useAppSelector((s) => s.account.status);
@@ -15,7 +16,9 @@ const Account = () => {
   );
 
   const dispatch = useAppDispatch();
+  const navigate = useNavigate()
   useEffect(() => {
+    if (!localStorage.getItem("Authorization")) navigate('/account/login');
     dispatch(fetchGetAccount());
   }, []);
 
@@ -25,6 +28,7 @@ const Account = () => {
         <div>
           <h1>{username}</h1>
           <h2>{orgName}</h2>
+          <h2>{role}</h2>
           {role === ERole.DEFENSE && <h3>{orgRegion}</h3>}
         </div>
       )}

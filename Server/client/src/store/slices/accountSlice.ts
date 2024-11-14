@@ -27,7 +27,6 @@ import {
         }).then((d) =>
           d.json()
         )) as IGetAccount;
-        console.log(account);
         return thunkApi.fulfillWithValue(account);
       } catch (err) {
         thunkApi.rejectWithValue((err as Error).message);

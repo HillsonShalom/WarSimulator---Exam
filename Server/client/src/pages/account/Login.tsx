@@ -1,12 +1,14 @@
 import { useState } from "react";
-import { fetchLogin } from "../utils/accountService";
-import { useAppDispatch } from "../store/store";
-import { fetchGetAccount } from "../store/slices/accountSlice";
+import { fetchLogin } from "../../utils/accountService";
+import { useAppDispatch } from "../../store/store";
+import { fetchGetAccount } from "../../store/slices/accountSlice";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useAppDispatch()
+  const navigate = useNavigate()
   return (
     <div>
       <input
@@ -31,7 +33,7 @@ const Login = () => {
             alert("succeeded")
 
             dispatch(fetchGetAccount())
-            // navigation
+            navigate("/account")
           } catch (err) {
             alert((err as Error).message);
           }
