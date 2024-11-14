@@ -2,10 +2,38 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  font-style: normal;
+  font-weight: 400;
 }
 
 #root {
   height: 100vh;
   width: 100vw;
   background-color: cadetblue;
+}
+
+.app{
+  background-color: bisque;
+  width: 70%;
+  height: 100vh;
+  margin: auto;
+}
+
+.header{
+  display: flex;
+  justify-content: space-around;
+  padding: 2px;
+}
+
+.header > * {
+  border: black 1px solid;
+  border-radius: 4px;
+
+  flex-grow: 1;
+  text-align: center;
+}
+
+.header * + * {
+  margin-left: 2px;
 }
