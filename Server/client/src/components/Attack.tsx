@@ -1,20 +1,25 @@
+
 import { useEffect } from "react";
-import { useAppDispatch, useAppSelector } from "../store/store"
-import { fetchGetAccount } from "../store/slices/accountSlice";
+import { useAppDispatch, useAppSelector } from "../store/store";
 import Ammo from "./Ammo";
+import History from "./History";
+import { fetchGetAccount } from "../store/slices/accountSlice";
+import { DataStatus } from "../types/redux";
 
 const Attack = () => {
-    const account = useAppSelector(s => s.account.account);
-    const dispatch = useAppDispatch();
+  const loadingAccStatus = useAppSelector(s => s.account.status)
+  const dispatch = useAppDispatch();
 
-    useEffect(()=> {
+  useEffect(()=> {
 dispatch(fetchGetAccount())
-    }, [])
+  }, [])
+
   return (
     <div>
         <h1>Attack</h1>
         <Ammo/>
-        <p>{JSON.stringify(account)}</p>
+        {loadingAccStatus === DataStatus.SUCCESS && <History/>}
+        
     </div>
   )
 }

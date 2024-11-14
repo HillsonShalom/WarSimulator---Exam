@@ -10,8 +10,8 @@ const attackRouter = Router();
 
 attackRouter.post('/', createAttack)
 attackRouter.patch('/:id', launch)
-attackRouter.get('/', getMine)
-attackRouter.get('/all', getOurs)
+attackRouter.get('/', getOurs)
+attackRouter.get('/mine', getMine)
 attackRouter.get('/ammo', getAmmo)
 attackRouter.get('/:id', getOne)
 

@@ -22,6 +22,7 @@ export interface IGetAccount {
   };
 }
 
+
 export enum ERole {
     ATTAK = "att",
     DEFENSE = 'def'

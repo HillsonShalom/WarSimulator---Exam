@@ -1,4 +1,5 @@
 import { IGetAccount, IOrganizationsOptions } from "../DTOs/response/fromAccount";
+import { ITableItem } from "../DTOs/response/fromHistory";
 
 export enum DataStatus {
   LOADING = "LOADING",
@@ -18,4 +19,8 @@ export interface orgsState extends statesParent {
 
 export interface accountState extends statesParent {
     account: IGetAccount | null
+}
+
+export interface tableState extends statesParent {
+    data: ITableItem[]
 }
