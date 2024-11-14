@@ -29,10 +29,10 @@ app.use(cors())
 app.use(exp.json());
 app.use(cookieParser());
 
-app.use('/account', accountRouter)
-app.use('/attack', verifyToken, onlyAttacker, attackRouter)
-app.use('/defense', verifyToken, onlyDefenser, defenseRouter)
-app.use('/store', purchasesRouter)
+app.use('/api/account', accountRouter)
+app.use('/api/attack', verifyToken, onlyAttacker, attackRouter)
+app.use('/api/defense', verifyToken, onlyDefenser, defenseRouter)
+app.use('/api/store', purchasesRouter)
 
 
 server.listen(port || 5000, () => {

@@ -7,7 +7,7 @@ import { DataStatus, tableState } from "../../types/redux";
 import { ERole } from "../../types/DTOs/response/fromAccount";
 import { DispatchStatus, ITableItem } from "../../types/DTOs/response/fromHistory";
 
-const baseUrl = "http://localhost:8201/";
+const baseUrl = "http://localhost:8201/api/";
 
 const initialState: tableState = {
   error: null,

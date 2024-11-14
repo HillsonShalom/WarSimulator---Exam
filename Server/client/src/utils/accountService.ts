@@ -1,7 +1,7 @@
 
 import { loginDto, registerDto } from "../types/DTOs/requests/accountDTOs";
 
-const baseUrl = "http://localhost:8201/account";
+const baseUrl = "http://localhost:8201/api/account";
 
 export const fetchRegister = async (dto: registerDto): Promise<returnType> => {
   try {

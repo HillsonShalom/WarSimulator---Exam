@@ -6,7 +6,7 @@ import {
   import { accountState, DataStatus } from "../../types/redux";
   import { IGetAccount } from "../../types/DTOs/response/fromAccount";
   
-  const baseUrl = "http://localhost:8201/account";
+  const baseUrl = "http://localhost:8201/api/account";
   
   const initialState: accountState = {
     error: null,

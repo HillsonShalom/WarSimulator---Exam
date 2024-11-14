@@ -6,7 +6,7 @@ import {
 import { DataStatus, orgsState } from "../../types/redux";
 import { IOrganizationsOptions } from "../../types/DTOs/response/fromAccount";
 
-const baseUrl = "http://localhost:8201/account/orgs";
+const baseUrl = "http://localhost:8201/api/account/orgs";
 
 const initialState: orgsState = {
   error: null,
