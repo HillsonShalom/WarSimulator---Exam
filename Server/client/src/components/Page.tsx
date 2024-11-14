@@ -1,3 +1,5 @@
+import './style/Page.css'
+
 import { Navigate, Route, Routes } from "react-router-dom"
 import Attack from "../pages/attack/Attack"
 import Defense from "../pages/defend/Defense"
@@ -7,7 +9,7 @@ import AppError from "../pages/AppError"
 
 const Page = () => {
   return (
-    <div>
+    <div className="main">
         <Routes>
             <Route path='/' element={<Navigate replace to="/account"/>} />
             <Route path='account/*' element={<AccountRouter/>} />

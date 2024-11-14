@@ -1,0 +1,32 @@
+.header {
+   text-align: center; 
+}
+
+.header-text {
+    font-weight: bold;
+  font-size: large;
+}
+
+.header-links {
+  display: flex;
+  justify-content: space-around;
+  padding: 2px;
+}
+
+.header-links > * {
+  border-radius: 4px;
+  background-color: darkgoldenrod;
+
+  font-weight: bold;
+  font-size: large;
+
+  flex-grow: 1;
+}
+
+.header-links > *:active {
+  background-color: inherit;
+}
+
+.header-links * + * {
+  margin-left: 4px;
+}

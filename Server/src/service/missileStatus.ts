@@ -1,9 +1,9 @@
 import DispatchStatus from "../types/models/enums";
 import Dispatch from "../types/schemas/dispatchSchema";
 
-export const setTimeHit = async () => {
+export const setTimeHit = async (id: string) => {
   try {
-    const threat = await Dispatch.findById("").exec();
+    const threat = await Dispatch.findById(id).exec();
     if (threat && threat.status === DispatchStatus.INTERCEPTED) {
       return;
     } else if (threat) {

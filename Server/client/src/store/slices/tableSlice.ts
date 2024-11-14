@@ -2,6 +2,7 @@ import {
   ActionReducerMapBuilder,
   createAsyncThunk,
   createSlice,
+  PayloadAction,
 } from "@reduxjs/toolkit";
 import { DataStatus, tableState } from "../../types/redux";
 import { ERole } from "../../types/DTOs/response/fromAccount";
@@ -14,6 +15,7 @@ const initialState: tableState = {
   status: DataStatus.IDLE,
   data: [],
 };
+
 
 export const fetchTable = createAsyncThunk(
   "table/get",
@@ -32,6 +34,13 @@ export const fetchTable = createAsyncThunk(
         res = res.filter(r => r.status !== DispatchStatus.LOADED)
       }
 
+      res = res.sort((a, b) => {
+        if (!a.launchTime && !b.launchTime) return 0;
+        if (!a.launchTime) return -1;
+        if (!b.launchTime) return 1;
+        return 0;
+      })
+
       return thunkApi.fulfillWithValue(res)
     } catch (err) {
       thunkApi.rejectWithValue((err as Error).message);
@@ -42,7 +51,14 @@ export const fetchTable = createAsyncThunk(
 const tableSlice = createSlice({
   name: "table",
   initialState,
-  reducers: {},
+  reducers: {
+    addAttack: (state, action: PayloadAction<ITableItem>) => {
+      state.data = [action.payload, ...state.data]
+    },
+    changeLaunch: (state, action: PayloadAction<string>) => {
+      state.data.find(r => r.id === action.payload)!.status = DispatchStatus.LAUNCHED
+    }
+  },
   extraReducers: (builder: ActionReducerMapBuilder<tableState>) => {
     builder
       .addCase(fetchTable.pending, (state) => {
@@ -64,3 +80,5 @@ const tableSlice = createSlice({
 });
 
 export default tableSlice;
+
+export const {addAttack, changeLaunch} = tableSlice.actions

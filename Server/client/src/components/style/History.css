@@ -1,0 +1,20 @@
+th, td {
+    border: 1px solid gray;
+    padding-left: 5px;
+}
+
+table{
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.td-btn{
+    padding: 2px;
+    justify-content: center;
+    text-align: center;
+    cursor: pointer;
+}
+
+th {
+    background-color: chocolate;
+}

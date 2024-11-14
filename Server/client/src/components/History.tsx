@@ -1,9 +1,15 @@
+import "./style/History.css";
 import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../store/store";
-import { fetchTable } from "../store/slices/tableSlice";
+import { changeLaunch, fetchTable } from "../store/slices/tableSlice";
 import { DataStatus } from "../types/redux";
+import { fetchLaunch } from "../utils/attackService";
+import { ERole } from "../types/DTOs/response/fromAccount";
+import { DispatchStatus } from "../types/DTOs/response/fromHistory";
+import { fetchIntercept } from "../utils/defendService";
 
 const History = () => {
+  const interceptor = useAppSelector(s => s.defend)
   const loadingStatus = useAppSelector((s) => s.table.status);
   const table = useAppSelector((s) => s.table.data);
   const role = useAppSelector((s) => s.account.account?.organization.role);
@@ -37,7 +43,19 @@ const History = () => {
                   <td>{r.fromOrg}</td>
                   <td>{r.toRegion}</td>
                   <td>{r.timeToHit}</td>
-                  <td>{r.status}</td>
+                  <td className="td-btn" onClick={async () => {
+                    if (role === ERole.ATTAK) {
+                      if (r.status !== DispatchStatus.LOADED) {return;}
+                      const [s, e] = await fetchLaunch(r.id);
+                    if (!s) {alert(e); return;}
+                    dispatch(changeLaunch(r.id))
+                    } if (role === ERole.DEFENSE) {
+                      if (r.status !== DispatchStatus.LAUNCHED) {return;}
+                      if (!interceptor) {alert("choose an interceptor first!"); return;}
+                      const [s, e] = await fetchIntercept({threatId: r.id, missile: interceptor})
+                      if (!s) {alert(e); return;}
+                    }
+                  }}>{r.status}</td>
                 </tr>
               );
             })}

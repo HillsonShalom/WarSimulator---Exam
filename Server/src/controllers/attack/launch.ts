@@ -19,7 +19,7 @@ const launch = async (req: Request<{ id: string }>, res: Response) => {
     res.send("The missile launched successfully");
 
     const missile = disp.attack.missile as MissileType;
-    setTimeout(setTimeHit, missile.speed * 3000);
+    setTimeout(() => setTimeHit(req.params.id), missile.speed * 3000);
   } catch (err) {
     const error = err as AppResError;
     res.status(error.statusCode || 500).send(error.message);
